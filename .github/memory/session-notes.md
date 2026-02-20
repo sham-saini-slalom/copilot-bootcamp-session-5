@@ -30,6 +30,35 @@ This file is committed to git and acts as a historical record of what was comple
 
 ---
 
+## Session: Step 5-1 Backend Test Fixes
+- **Date:** 2026-02-20
+
+### What Was Accomplished
+- Fixed all failing backend tests in `packages/backend/__tests__/app.test.js`
+- Initialized `todos` array and `nextId` counter for proper data management
+- Implemented POST /api/todos endpoint with title validation
+- Implemented PUT /api/todos/:id endpoint with 404 handling
+- Fixed PATCH /api/todos/:id/toggle bug (was always setting to true, now properly toggles)
+- Implemented DELETE /api/todos/:id endpoint with proper removal logic
+
+### Key Findings and Decisions
+- **Finding:** Multiple endpoints were unimplemented (returning 501) and one had a logic bug (toggle)
+- **Decision:** Fixed only test-related issues per Step 5-1 scope; left linting issues for Step 5-2
+- **Decision:** Used `trim()` check for title validation to catch empty string edge case
+- **Finding:** Tests require specific structure: `{ id, title, completed, createdAt }`
+- **Decision:** Used `findIndex` for DELETE to properly remove from array by reference
+
+### Outcomes
+- GET /api/todos: Returns empty array instead of null
+- POST: Validates title (required, non-empty), generates IDs, creates proper structure, returns 201
+- PUT: Updates title while preserving completed status, returns 404 for missing todos
+- PATCH toggle: Now properly toggles between true/false states
+- DELETE: Removes todos and handles 404 for non-existent items
+- All endpoints ready for test validation
+- Intentional linting issues preserved for Step 5-2 (`unusedDebugFlag`, console statements)
+
+---
+
 ## Example Session Summary
 
 ### Session Name and Date
