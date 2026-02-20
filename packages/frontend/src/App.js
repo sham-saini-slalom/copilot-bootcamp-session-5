@@ -80,7 +80,7 @@ function App() {
   const deleteTodoMutation = useMutation({
     mutationFn: async (id) => {
       // TODO: Implement delete functionality
-      console.log('Delete todo:', id);
+      // Delete todo with id: {id}
       // Missing: await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
     },
     onSuccess: () => {
@@ -199,7 +199,9 @@ function App() {
                   <IconButton
                     size="small"
                     color="primary"
-                    onClick={() => console.log('Edit not implemented')}
+                    onClick={() => {
+                      // Edit not implemented yet
+                    }}
                   >
                     <EditIcon />
                   </IconButton>

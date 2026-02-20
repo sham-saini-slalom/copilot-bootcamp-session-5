@@ -136,3 +136,45 @@ todo.completed = !todo.completed;
 
 ### Related Files
 - packages/backend/src/app.js (PATCH /api/todos/:id/toggle)
+
+---
+
+## Pattern: Systematic Lint Error Resolution
+
+### Pattern Name
+- Categorize and fix lint errors by type
+
+### Context
+- Code quality cleanup when multiple ESLint errors exist across files
+
+### Problem
+- Many mixed lint errors can be overwhelming
+- Random fixes lead to missed issues and repeated test runs
+
+### Solution
+- Run lint to identify all errors
+- Group errors by type/rule (no-unused-vars, no-console, etc.)
+- Fix one category at a time across all files
+- Verify tests pass after each category
+- Rerun lint to confirm all issues resolved
+
+### Example
+```bash
+# 1. Identify errors
+npm run lint
+
+# 2. Fix by category:
+#    a) Remove unused variables
+#    b) Remove/replace console statements
+#    c) Fix import order
+#    d) Fix formatting
+
+# 3. Verify after each category
+npm test
+npm run lint
+```
+
+### Related Files
+- packages/backend/src/app.js
+- packages/backend/src/index.js
+- packages/frontend/src/App.js
